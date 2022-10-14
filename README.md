@@ -17,6 +17,7 @@ from anu_qrng.clients import AsyncClient, SyncClient
 from anu_qrng.clients_free import  AsyncClientFree, SyncClientFree
 
 
+# Take it here: https://quantumnumbers.anu.edu.au/api-key
 API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 
