@@ -20,7 +20,7 @@ class AsyncClient:
             async with session.get(f"{self._api_url}?length={size}&type={type_}",
                                    headers={'x-api-key': self._api_key}) as resp:
                 result = await resp.json()
-                if result['success']:
+                if resp.status == 200 and result.get('success', False):
                     return result['data']
                 else:
                     raise ApiError(result['message'])
@@ -45,7 +45,7 @@ class SyncClient:
         with requests.get(f"{self._api_url}?length={size}&type={type_}",
                           headers={'x-api-key': self._api_key}) as resp:
             result = resp.json()
-            if result['success']:
+            if resp.status_code == 200 and result.get('success', False):
                 return result['data']
             else:
                 raise ApiError(result['message'])
